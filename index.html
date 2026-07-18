@@ -275,7 +275,7 @@
     border-radius:var(--radius-lg);
     overflow:hidden;
     border:1px solid var(--border);
-    box-shadow:0 20px 50px -20px rgba(0,0,0,.7), 0 0 30px rgba(0,240,255,0.12);
+    box-shadow:0 20px 44px -22px rgba(0,0,0,.75);
     opacity:0;
     transform:translateY(14px);
     animation:cardIn .8s cubic-bezier(.16,.8,.24,1) forwards .1s;
@@ -284,27 +284,7 @@
     width:100%;
     height:auto;
     display:block;
-    aspect-ratio:1/1;
-    object-fit:cover;
   }
-  .hero-banner::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 55%, rgba(4,3,8,0.9) 100%);
-    pointer-events:none;
-  }
-  .hero-banner::before{
-    content:"";
-    position:absolute; inset:0;
-    box-shadow:inset 0 0 40px rgba(0,240,255,0.15);
-    pointer-events:none;
-    z-index:2;
-  }
-  .banner-corner{ position:absolute; width:18px; height:18px; border:2px solid var(--cyan); z-index:3; }
-  .banner-corner.tl{ top:10px; left:10px; border-right:none; border-bottom:none; }
-  .banner-corner.tr{ top:10px; right:10px; border-left:none; border-bottom:none; }
-  .banner-corner.bl{ bottom:10px; left:10px; border-right:none; border-top:none; }
-  .banner-corner.br{ bottom:10px; right:10px; border-left:none; border-top:none; }
 
   /* ABOUT */
   .about{
@@ -478,10 +458,6 @@
     <p class="role">FCMG // TODOS OS LINKS EM UM SÓ LUGAR</p>
 
     <div class="hero-banner">
-      <span class="banner-corner tl"></span>
-      <span class="banner-corner tr"></span>
-      <span class="banner-corner bl"></span>
-      <span class="banner-corner br"></span>
       <img src="mindset-banner.jpg" alt="Mindset Elite — mentalidade de alta performance" loading="eager">
     </div>
   </div>
