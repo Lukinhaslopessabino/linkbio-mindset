@@ -119,13 +119,15 @@
   .intro-logo-wrap{
     position:relative;
     width:76px; height:76px;
+    border-radius:50%;
+    overflow:hidden;
+    background:var(--bg-1);
     display:flex; align-items:center; justify-content:center;
     animation:glitchIn .9s steps(6) forwards;
     opacity:0;
   }
   .intro-logo-wrap img{
-    width:100%; height:100%; object-fit:contain;
-    filter:drop-shadow(0 0 16px var(--cyan-glow));
+    width:100%; height:100%; object-fit:cover; object-position:center;
     position:relative; z-index:2;
   }
   .intro-logo-fallback{ width:70px; height:70px; filter:drop-shadow(0 0 16px var(--cyan-glow)); }
@@ -199,25 +201,36 @@
   /* HERO */
   .hero{ display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:38px; }
   .logo-badge{ position:relative; width:112px; height:112px; display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+  .logo-badge .logo-frame{
+    position:relative;
+    width:84px; height:84px;
+    border-radius:50%;
+    overflow:hidden;
+    z-index:2;
+    background:var(--bg-1);
+  }
   .logo-badge img{
-    width:60px; height:60px; object-fit:contain;
-    position:relative; z-index:2;
-    filter:drop-shadow(0 0 12px var(--cyan-glow));
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
     animation:floatLogo 4s ease-in-out infinite;
   }
-  @keyframes floatLogo{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
-  .logo-hex{
+  @keyframes floatLogo{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+  .logo-ring{
     position:absolute; inset:0;
-    clip-path:polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-    background:linear-gradient(160deg, rgba(0,240,255,0.14), rgba(255,46,230,0.05));
+    border-radius:50%;
     border:1px solid var(--border);
   }
-  .logo-hex::after{
+  .logo-ring::after{
     content:"";
-    position:absolute; inset:0;
-    clip-path:polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    position:absolute; inset:-1px;
+    border-radius:50%;
+    padding:2px;
     background:conic-gradient(from 0deg, var(--cyan), var(--magenta) 40%, transparent 55%, transparent 85%, var(--cyan));
-    opacity:.5;
+    -webkit-mask:linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
     animation:spin 6s linear infinite;
   }
   @keyframes spin{ to{ transform:rotate(360deg); } }
@@ -449,9 +462,11 @@
 
   <div class="hero">
     <div class="logo-badge">
-      <span class="logo-hex"></span>
-      <img src="logo.png" alt="Mindset Elite"
-           onerror="this.replaceWith(document.getElementById('svg-fallback-hero').content.cloneNode(true))">
+      <span class="logo-ring"></span>
+      <span class="logo-frame">
+        <img src="logo.png" alt="Mindset Elite"
+             onerror="this.replaceWith(document.getElementById('svg-fallback-hero').content.cloneNode(true))">
+      </span>
     </div>
     <p class="eyebrow">Sistema iniciado</p>
     <h1><span class="glow">MINDSET</span> ELITE</h1>
